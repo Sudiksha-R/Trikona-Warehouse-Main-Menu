@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Neutral off-white background */
+    --background: 0 0% 98%;
+    /* Neutral black foreground */
+    --foreground: 0 0% 5%;
+
+    /* Neutral light grey muted background */
+    --muted: 0 0% 96%;
+    /* Neutral medium grey muted foreground */
+    --muted-foreground: 0 0% 45%;
+
+    /* Pure white popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+
+    /* Neutral light grey border */
+    --border: 0 0% 90%;
+    /* Neutral light grey input */
+    --input: 0 0% 90%;
+
+    /* Pure white card */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+
+    /* Pure black primary */
+    --primary: 0 0% 5%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Neutral light grey secondary */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 5%;
+
+    /* Construction yellow accent (#FFB400 is approx 43 100% 50%) */
+    --accent: 43 100% 50%;
+    --accent-foreground: 0 0% 5%;
+
+    /* Red destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Ring color - Yellow for focus */
+    --ring: 43 100% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  :root[class~="dark"] {
+    /* Pure dark black background */
+    --background: 0 0% 4%;
+    /* Neutral white foreground */
+    --foreground: 0 0% 96%;
+
+    /* Dark grey muted background */
+    --muted: 0 0% 12%;
+    /* Light grey muted foreground */
+    --muted-foreground: 0 0% 65%;
+
+    /* Dark black popover */
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 96%;
+
+    /* Dark black card */
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 96%;
+
+    /* Dark grey border */
+    --border: 0 0% 15%;
+    /* Dark grey input */
+    --input: 0 0% 15%;
+
+    /* White primary */
+    --primary: 0 0% 96%;
+    --primary-foreground: 0 0% 5%;
+
+    /* Dark grey secondary */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+
+    /* Construction yellow accent */
+    --accent: 43 100% 50%;
+    --accent-foreground: 0 0% 5%;
+
+    /* Red destructive */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 96%;
+
+    /* Ring color - Yellow */
+    --ring: 43 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .animate-scanline {
+    animation: scanline 8s linear infinite;
+  }
+  
+  .animate-subtle-pulse {
+    animation: subtle-pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .animate-radar-sweep {
+    animation: radar-sweep 10s linear infinite;
+  }
+
+  .animate-perimeter-pulse {
+    animation: perimeter-pulse 4s ease-in-out infinite;
+  }
+
+  .animate-reticle-pulse {
+    animation: reticle-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-scan-highlight {
+    animation: scan-highlight 1.5s ease-in-out infinite;
+  }
+
+  .animate-data-flicker {
+    animation: data-flicker 4s steps(5, start) infinite;
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes subtle-pulse {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes radar-sweep {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes perimeter-pulse {
+    0%, 100% {
+      box-shadow: inset 0 0 20px rgba(212, 168, 0, 0.1);
+      border-color: rgba(212, 168, 0, 0.3);
+    }
+    50% {
+      box-shadow: inset 0 0 50px rgba(212, 168, 0, 0.3);
+      border-color: rgba(212, 168, 0, 0.6);
+    }
+  }
+
+  @keyframes reticle-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scan-highlight {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes data-flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.5; }
+    94% { opacity: 1; }
+    96% { opacity: 0.8; }
+    97% { opacity: 1; }
+  }
+}
